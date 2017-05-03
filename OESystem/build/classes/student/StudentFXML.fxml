@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="stPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="student.StudentController">
+   <children>
+      <Pane fx:id="toolPane" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="720.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <MenuButton fx:id="menuBtn" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="111.0" text="選單" />
+            <Label fx:id="dateLabel" layoutX="130.0" layoutY="8.0" prefHeight="24.0" prefWidth="167.0" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="timeLabel" alignment="CENTER" layoutX="324.0" layoutY="12.0" prefHeight="24.0" prefWidth="376.0" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="welcomeUserLabel" alignment="CENTER_RIGHT" layoutX="736.0" layoutY="12.0" prefHeight="23.0" prefWidth="211.0" textAlignment="RIGHT" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="logoutBtn" layoutX="960.0" layoutY="10.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="50.0" text="登出" />
+         </children>
+      </Pane>
+      <Pane fx:id="examPane" layoutX="86.0" layoutY="91.0" prefHeight="680.0" prefWidth="944.0" style="-fx-background-radius: 30; -fx-background-color: rgba(70,130,180,0.3);" visible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="68.0">
+         <children>
+            <TextArea fx:id="msgInputArea" layoutX="540.0" layoutY="589.0" onKeyPressed="#keyEvent" prefHeight="60.0" prefWidth="305.0" promptText="輸入訊息" />
+            <Button layoutX="854.0" layoutY="595.0" mnemonicParsing="false" onAction="#sendMsg" prefHeight="45.0" prefWidth="64.0" text="傳送訊息" />
+            <TextArea fx:id="msgArea" editable="false" layoutX="538.0" layoutY="78.0" prefHeight="493.0" prefWidth="376.0" />
+            <TextArea fx:id="answerArea" layoutX="34.0" layoutY="245.0" prefHeight="374.0" prefWidth="481.0">
+               <font>
+                  <Font size="16.0" />
+               </font></TextArea>
+            <Button layoutX="438.0" layoutY="630.0" mnemonicParsing="false" onAction="#submitAnswer" prefHeight="38.0" prefWidth="77.0" text="交卷" />
+            <Label layoutX="34.0" layoutY="51.0" text="題目：">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="544.0" layoutY="52.0" text="討論區：">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="217.0" text="作答區域：">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button layoutX="886.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeExamPane" prefHeight="24.0" prefWidth="29.0" text="X" />
+            <Label fx:id="pathLabel" layoutX="36.0" layoutY="10.0" textFill="#1e04e4">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="questionLabel" alignment="TOP_LEFT" layoutX="31.0" layoutY="78.0" prefHeight="128.0" prefWidth="481.0" style="-fx-background-color: white;" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

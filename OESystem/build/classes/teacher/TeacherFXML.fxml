@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teacher.TeacherController">
+   <children>
+      <Pane fx:id="toolPane" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="720.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <MenuButton fx:id="MenuBtn" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="111.0" text="選單">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#setCreateCoursePane" text="新增課程" />
+                  <MenuItem mnemonicParsing="false" onAction="#queryCourse" text="課程查詢" />
+                  <MenuItem mnemonicParsing="false" onAction="#setCreateExamPane" text="新增考試" />
+                  <MenuItem mnemonicParsing="false" onAction="#queryExam" text="考試查詢" />
+                  <MenuItem mnemonicParsing="false" onAction="#createProblem" text="新增題目" />
+                  <Menu fx:id="monitorMenu" mnemonicParsing="false" text="監考考試" />
+               </items>
+            </MenuButton>
+            <Label fx:id="dateLabel" layoutX="130.0" layoutY="8.0" prefHeight="24.0" prefWidth="167.0" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="timeLabel" alignment="CENTER" layoutX="324.0" layoutY="12.0" prefHeight="24.0" prefWidth="376.0" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="welcomeUserLabel" alignment="CENTER_RIGHT" layoutX="737.0" layoutY="12.0" prefHeight="23.0" prefWidth="210.0" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="logoutBtn" layoutX="960.0" layoutY="10.0" mnemonicParsing="false" onAction="#logout" prefHeight="23.0" prefWidth="50.0" text="登出" />
+         </children>
+      </Pane>
+      <Pane fx:id="monitorPane" layoutX="37.0" layoutY="125.0" prefHeight="686.0" prefWidth="991.0" style="-fx-background-color: rgba(70,130,180,0.3); -fx-background-radius: 30;" visible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="68.0">
+         <children>
+            <TextArea fx:id="msgInputArea" layoutX="24.0" layoutY="566.0" prefHeight="73.0" prefWidth="298.0" promptText="輸入訊息" />
+            <TextArea fx:id="msgArea" editable="false" layoutX="23.0" layoutY="310.0" prefHeight="234.0" prefWidth="376.0" />
+            <Button layoutX="334.0" layoutY="578.0" mnemonicParsing="false" onAction="#sendMsg" prefHeight="48.0" prefWidth="64.0" text="送出" />
+            <Button layoutX="906.0" layoutY="17.0" mnemonicParsing="false" onAction="#close" prefHeight="23.0" prefWidth="58.0" text="關閉" />
+            <Label layoutX="424.0" layoutY="107.0" text="考試控制：">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="712.0" layoutY="107.0" text="監考選項：">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="19.0" layoutY="78.0" text="題目：">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="24.0" layoutY="280.0" text="討論區：">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="421.0" layoutY="186.0" text="目前參與考試的人員：">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <MenuButton layoutX="508.0" layoutY="107.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="請選擇">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#pauseExam" text="暫停考試" />
+                <MenuItem mnemonicParsing="false" onAction="#resumeExam" text="繼續考試" />
+                  <MenuItem mnemonicParsing="false" text="延長時間" />
+                  <MenuItem mnemonicParsing="false" text="提前結束" />
+              </items>
+            </MenuButton>
+            <MenuButton layoutX="796.0" layoutY="107.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="請選擇">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#startMonitor" text="開始截圖" />
+                  <MenuItem mnemonicParsing="false" onAction="#stopMonitor" text="停止截圖" />
+               </items>
+            </MenuButton>
+            <Label fx:id="questionLabel" alignment="TOP_LEFT" layoutX="18.0" layoutY="107.0" prefHeight="158.0" prefWidth="376.0" style="-fx-background-color: white;">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Label>
+            <ScrollPane fx:id="studentList" layoutX="421.0" layoutY="216.0" prefHeight="430.0" prefWidth="160.0" />
+            <ScrollPane fx:id="snapshotPane" layoutX="597.0" layoutY="216.0" prefHeight="430.0" prefWidth="376.0" />
+            <Label fx:id="pathLabel" layoutX="41.0" layoutY="25.0" textFill="#1e04e4" underline="true">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="courseQueryPane" layoutX="134.0" layoutY="71.0" prefHeight="305.0" prefWidth="352.0" style="-fx-background-color: rgba(70,130,180,0.3); -fx-background-radius: 50;" visible="false" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="148.0">
+         <children>
+            <Label fx:id="courseQueryLabel" alignment="TOP_LEFT" disable="true" layoutX="238.0" layoutY="131.0" prefHeight="219.0" prefWidth="266.0" style="-fx-background-color: lightgray;" />
+            <Label layoutX="35.0" layoutY="23.0" text="課程查詢">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Button layoutX="718.0" layoutY="471.0" mnemonicParsing="false" onAction="#close" prefHeight="29.0" prefWidth="70.0" text="關閉" />
+         </children>
+      </Pane>
+      <Pane fx:id="courseCreatePane" layoutX="134.0" layoutY="71.0" prefHeight="305.0" prefWidth="352.0" style="-fx-background-color: lightgray;" visible="false">
+         <children>
+            <Label layoutX="28.0" layoutY="61.0" text="課程名稱" />
+            <Label layoutX="28.0" layoutY="91.0" text="學       年" />
+            <Label layoutX="28.0" layoutY="122.0" text="學       期" />
+            <Label layoutX="14.0" layoutY="14.0" text="新增課程">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="28.0" layoutY="153.0" text="學       生" />
+            <TextField fx:id="course_name" layoutX="95.0" layoutY="56.0" />
+            <TextField fx:id="course_year" layoutX="95.0" layoutY="86.0" />
+            <TextField fx:id="course_semester" layoutX="95.0" layoutY="117.0" />
+            <ListView fx:id="course_stds" disable="true" layoutX="95.0" layoutY="152.0" prefHeight="84.0" prefWidth="167.0" visible="false" />
+            <Button layoutX="222.0" layoutY="240.0" mnemonicParsing="false" onAction="#sendCourse" text="送出" />
+            <Button layoutX="276.0" layoutY="240.0" mnemonicParsing="false" onAction="#close" text="關閉" />
+         </children>
+      </Pane>
+      <Pane fx:id="examQueryPane" layoutX="135.0" layoutY="71.0" prefHeight="305.0" prefWidth="352.0" visible="false">
+         <children>
+            <Label fx:id="examQueryLabel" alignment="TOP_LEFT" disable="true" layoutX="43.0" layoutY="82.0" prefHeight="180.0" prefWidth="266.0" style="-fx-background-color: lightgray;" />
+            <Label layoutX="26.0" layoutY="21.0" text="考試查詢" />
+            <Button layoutX="287.0" layoutY="270.0" mnemonicParsing="false" onAction="#close" text="關閉" />
+            <Button layoutX="197.0" layoutY="45.0" mnemonicParsing="false" onAction="#sendQueryExam" text="送出" />
+            <Label layoutX="43.0" layoutY="50.0" text="課程 ID" />
+            <TextField fx:id="courseIdText" layoutX="96.0" layoutY="45.0" prefHeight="27.0" prefWidth="88.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="examCreatePane" layoutX="157.0" layoutY="104.0" prefHeight="213.0" prefWidth="307.0" visible="false">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="新增考試">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="28.0" layoutY="61.0" text="課  程 ID" />
+            <Label layoutX="28.0" layoutY="91.0" text="考試題目" />
+            <Label layoutX="28.0" layoutY="122.0" text="時       間" />
+            <TextField fx:id="exam_courseId" layoutX="95.0" layoutY="56.0" />
+            <TextField fx:id="exam_name" layoutX="95.0" layoutY="86.0" />
+            <TextField fx:id="exam_duration" layoutX="95.0" layoutY="117.0" />
+            <Button layoutX="244.0" layoutY="153.0" mnemonicParsing="false" onAction="#close" text="關閉" />
+            <Button layoutX="193.0" layoutY="153.0" mnemonicParsing="false" onAction="#sendExam" text="送出" />
+         </children>
+      </Pane>
+      <Pane fx:id="problemCreatePane" layoutX="158.0" layoutY="88.0" prefHeight="270.0" prefWidth="307.0" visible="false">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="新增考試題目">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="28.0" layoutY="61.0" text="課  程 ID" />
+            <Label layoutX="28.0" layoutY="91.0" text="考 試 ID" />
+            <Label layoutX="28.0" layoutY="122.0" text="題　  目" />
+            <TextField fx:id="problem_cid" layoutX="95.0" layoutY="56.0" />
+            <TextField fx:id="problem_eid" layoutX="95.0" layoutY="86.0" visible="false" />
+            <TextField fx:id="problem_title" layoutX="95.0" layoutY="117.0" />
+            <TextArea fx:id="problem_desc" layoutX="95.0" layoutY="149.0" prefHeight="73.0" prefWidth="159.0" />
+            <Button layoutX="195.0" layoutY="233.0" mnemonicParsing="false" onAction="#sendProblem" text="送出" />
+            <Button layoutX="254.0" layoutY="233.0" mnemonicParsing="false" onAction="#close" text="關閉" />
+            <Label layoutX="28.0" layoutY="149.0" text="題目說明" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

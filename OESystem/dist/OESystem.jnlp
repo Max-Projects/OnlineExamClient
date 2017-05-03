@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="OESystem.jnlp">
+  <information>
+    <title>OESystem</title>
+    <vendor>Yao</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="OESystem.jar" size="45562" download="eager" />
+    <jar href="lib/OnlineExamSystemAPI.jar" size="45389" download="eager" />
+    <jar href="lib/gson-2.5.jar" size="232482" download="eager" />
+    <jar href="lib/okhttp-2.6.0.jar" size="326666" download="eager" />
+    <jar href="lib/okio-1.6.0.jar" size="65928" download="eager" />
+    <jar href="lib/richtextfx-fat-0.6.10.jar" size="675497" download="eager" />
+    <jar href="lib/thumbnailator-0.4.8.jar" size="109720" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="OESystem" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="main.Main"  name="OESystem" >
+    <fx:param name="local" value="192,168.0.28"/>
+    <fx:param name="server" value="192.168.0.28"/>
+    <fx:param name="ssfreq" value="1000"/>
+    <fx:param name="ssscale" value="80"/>
+  </jfx:javafx-desc>
+  <update check="always"/>
+</jnlp>
